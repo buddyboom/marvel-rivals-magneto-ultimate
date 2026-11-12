@@ -218,6 +218,15 @@
             font-weight: 700;
         }
 
+        .tooltip-panel a {
+            color: #c49af2;
+            text-underline-offset: 2px;
+        }
+
+        .tooltip-panel a:hover {
+            color: #e2c9ff;
+        }
+
         .tooltip-description {
             padding-bottom: 6px;
             border-bottom: 1px solid #343c4b;
