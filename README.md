@@ -37,6 +37,16 @@ Keep the site files in their existing relative locations:
 - `data/`
 - `assets/heroes/`
 
+## Tests
+
+The damage calculation tests use Node.js's built-in test runner and need no installed dependencies:
+
+```sh
+node --test
+```
+
+Ability values shared by the calculator, controls, and tooltips are defined in `data/ability.js`.
+
 ## Corrections
 
 If you spot inaccurate data or have a suggested correction, use the link at the bottom of the live site or [open a new issue](https://github.com/buddyboom/marvel-rivals-magneto-ultimate/issues/new).
@@ -46,6 +56,8 @@ If you spot inaccurate data or have a suggested correction, use the link at the 
 This is an unofficial fan project. It is not affiliated with, endorsed by, or sponsored by Marvel, NetEase, or their affiliates.
 
 The hero portrait images in `assets/heroes/` were sourced from [tiermaker.com](https://tiermaker.com/create/marvel-rivals-characters-17333617) and depict Marvel Rivals characters. I do not own or claim ownership of those images, the underlying artwork, character names, game content, or any other third-party art or intellectual property used here. All such rights belong to their respective owners. tiermaker.com is identified as the source of the portrait files, not as the owner of the underlying Marvel Rivals artwork.
+
+The GitHub mark in the page footer uses the `mark-github` icon from [GitHub Primer Octicons](https://github.com/primer/octicons), which is licensed under the [MIT License](https://github.com/primer/octicons/blob/main/LICENSE).
 
 Mentioning a source or disclaiming ownership does not grant permission to use or redistribute third-party material. No rights to third-party assets are granted by this project. Check the applicable rights-holder and platform policies before publishing or reusing the images, especially for commercial purposes.
 

@@ -1,4 +1,5 @@
 (function () {
+const ABILITY = window.MagnetoAbility;
 const { calculateDamage } = window.MagnetoCalculator;
 const { attachAdjustmentButtons, attachShapeSlider } = window.MagnetoControls;
 const { renderRoster, updateDamageVisualization, updateRoster, updateShapeControls } = window.MagnetoVisualization;
@@ -8,6 +9,62 @@ const sliders = {
     energy: document.getElementById('energy'),
     distance: document.getElementById('distance')
 };
+
+const sliderLimits = {
+    charge: { min: ABILITY.charge.min, max: ABILITY.charge.max },
+    energy: { min: ABILITY.energy.min, max: ABILITY.energy.overload },
+    distance: { min: ABILITY.distance.min, max: ABILITY.radius.max }
+};
+
+Object.entries(sliderLimits).forEach(([name, limits]) => {
+    const slider = sliders[name];
+    slider.min = limits.min;
+    slider.max = limits.max;
+    if (name !== 'distance') {
+        const control = document.getElementById(name === 'charge' ? 'chargeControl' : 'energyControl');
+        control.setAttribute('aria-valuemin', limits.min);
+        control.setAttribute('aria-valuemax', limits.max);
+    }
+});
+
+const safeEnergyPreset = document.querySelector('.energy-presets [data-preset="safe-max"]');
+safeEnergyPreset.dataset.value = String(ABILITY.energy.overload - 1);
+safeEnergyPreset.textContent = safeEnergyPreset.dataset.value;
+
+const abilityText = {
+    abilityMaxDuration: `${ABILITY.charge.max} seconds`,
+    abilityInitialRadius: ABILITY.radius.initial,
+    abilityMaxRadius: ABILITY.radius.max,
+    abilityRadiusGrowthDuration: ABILITY.charge.radiusGrowthDuration,
+    abilityProjectileDamage: ABILITY.damage.projectile,
+    abilityInitialDamage: ABILITY.damage.initialCenter,
+    abilityFullyChargedDamage: ABILITY.damage.fullyChargedCenter,
+    abilityEnergyDamage: ABILITY.damage.energyPerPoint,
+    abilityMinimumFalloff: ABILITY.damage.minimumFalloff * 100,
+    abilityFalloffDistance: ABILITY.damage.falloffDistance,
+    abilityEnergyCost: ABILITY.energy.cost,
+    abilityAbsorptionRate: ABILITY.absorption.powerPerDamage,
+    abilityMaxAbsorption: ABILITY.absorption.maxProjectileDamage,
+    chargeTooltipInitialRadius: ABILITY.radius.initial,
+    chargeTooltipMaxRadius: ABILITY.radius.max,
+    chargeTooltipGrowthDuration: ABILITY.charge.radiusGrowthDuration,
+    chargeTooltipMaxDuration: ABILITY.charge.max,
+    energyTooltipDamage: ABILITY.damage.energyPerPoint,
+    energyTooltipInitialDamage: ABILITY.damage.initialCenter,
+    energyTooltipFullyChargedDamage: ABILITY.damage.fullyChargedCenter,
+    energyTooltipChargeDuration: ABILITY.charge.max,
+    energyTooltipAbsorptionRate: ABILITY.absorption.powerPerDamage,
+    energyTooltipMaxAbsorption: ABILITY.absorption.maxProjectileDamage,
+    distanceTooltipMinimumFalloff: ABILITY.damage.minimumFalloff * 100,
+    distanceTooltipFalloffDistance: ABILITY.damage.falloffDistance,
+    distanceTooltipInitialRadius: ABILITY.radius.initial,
+    distanceTooltipMaxRadius: ABILITY.radius.max,
+    distanceTooltipGrowthDuration: ABILITY.charge.radiusGrowthDuration
+};
+
+Object.entries(abilityText).forEach(([id, value]) => {
+    document.getElementById(id).textContent = value;
+});
 
 const shapeControls = {
     charge: document.getElementById('chargeControl'),

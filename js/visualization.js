@@ -1,5 +1,6 @@
 (function (global) {
 const HEROES = global.MagnetoHeroes;
+const ABILITY = global.MagnetoAbility;
 const ROLES = ['Vanguard', 'Duelist', 'Strategist'];
 
 function updateShapeControls(sliders, controls, time, energy) {
@@ -21,14 +22,14 @@ function updateShapeControls(sliders, controls, time, energy) {
 }
 
 function updateDamageVisualization(elements, distance, result) {
-    const sphereScale = result.radius / 8;
+    const sphereScale = result.radius / ABILITY.radius.max;
     const edgeDamageRatio = result.centerDamage > 0
         ? result.edgeDamage / result.centerDamage
         : 0;
     const inRange = distance <= result.radius && result.centerDamage > 0;
-    const distanceOffset = Math.min(distance / 8, 1) * 90;
+    const distanceOffset = Math.min(distance / ABILITY.radius.max, 1) * 90;
     const markerOpacity = inRange ? '1' : '0.45';
-    const halfFalloffOffset = Math.min(6 / result.radius, 1) * 100;
+    const halfFalloffOffset = Math.min(ABILITY.damage.falloffDistance / result.radius, 1) * 100;
 
     elements.damageRange.innerText =
         `Damage across field: ${result.edgeDamage} - ${Math.floor(result.centerDamage)}`;

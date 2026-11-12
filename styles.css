@@ -1009,6 +1009,32 @@
             margin: 0 auto;
         }
 
+        .site-footer-links {
+            display: flex;
+            justify-content: flex-end;
+            margin-top: 8px;
+        }
+
+        .github-link {
+            display: inline-flex;
+            width: 28px;
+            height: 28px;
+            align-items: center;
+            justify-content: center;
+            color: var(--text-muted);
+        }
+
+        .github-link svg {
+            display: block;
+            width: 20px;
+            height: 20px;
+            fill: white;
+        }
+
+        .github-link:hover {
+            color: var(--text-main);
+        }
+
         .site-disclaimer a {
             color: #c49af2;
             text-underline-offset: 2px;

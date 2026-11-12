@@ -21,11 +21,11 @@
                     <span><strong>Casting:</strong> Creates a persistent spell field, then launches a projectile when casting completes; the projectile creates another spell field on impact.</span>
                     <span><strong>Projectile absorption range:</strong> 15m spherical radius.</span>
                     <span><strong>Projectile speed:</strong> 45m/s.</span>
-                    <span><strong>Explosion range:</strong> Spherical; grows from a 5m radius to 8m after 4 seconds of charging.</span>
-                    <span><strong>Maximum duration:</strong> 5 seconds.</span>
-                    <span><strong>Damage:</strong> The projectile deals no damage. Spell-field damage at the center increases from 100 to 350 when fully charged. Each Energy point adds 3 damage. Damage falls to 50% at 6m from the center.</span>
-                    <span><strong>Energy cost:</strong> 3400.</span>
-                    <span><strong>Special effect:</strong> Each point of projectile damage absorbed increases power by 0.125, up to 800 projectile damage absorbed.</span>
+                    <span><strong>Explosion range:</strong> Spherical; grows from a <span id="abilityInitialRadius"></span>m radius to <span id="abilityMaxRadius"></span>m after <span id="abilityRadiusGrowthDuration"></span> seconds of charging.</span>
+                    <span><strong>Maximum duration:</strong> <span id="abilityMaxDuration"></span>.</span>
+                    <span><strong>Damage:</strong> The projectile deals <span id="abilityProjectileDamage"></span> damage. Spell-field damage at the center increases from <span id="abilityInitialDamage"></span> to <span id="abilityFullyChargedDamage"></span> when fully charged. Each Energy point adds <span id="abilityEnergyDamage"></span> damage. Damage falls to <span id="abilityMinimumFalloff"></span>% at <span id="abilityFalloffDistance"></span>m from the center.</span>
+                    <span><strong>Energy cost:</strong> <span id="abilityEnergyCost"></span>.</span>
+                    <span><strong>Special effect:</strong> Each point of projectile damage absorbed increases power by <span id="abilityAbsorptionRate"></span>, up to <span id="abilityMaxAbsorption"></span> projectile damage absorbed.</span>
                 </span>
             </span>
         </h1>
@@ -35,20 +35,20 @@
     <div class="calculator-hud">
         <section class="hud-orb-column" aria-label="Damage summary and charge duration">
             <div class="hud-result">
-                <p class="damage-value"><span class="visually-hidden">Damage at selected distance: </span><span id="damageDisplay">100</span></p>
-                <p class="damage-range" id="damageRange">Damage across field: 58 - 100</p>
+                <p class="damage-value"><span class="visually-hidden">Damage at selected distance: </span><span id="damageDisplay">0</span></p>
+                <p class="damage-range" id="damageRange">Damage across field</p>
             </div>
             <div class="orb-charge-row">
                 <div class="orb-composite">
                     <span class="tooltip-wrap charge-tooltip">
                         <button class="tooltip-trigger info-trigger" type="button" aria-label="About charge duration and spell radius" aria-describedby="chargeInfoTooltip">i</button>
                         <span class="tooltip-panel" id="chargeInfoTooltip" role="tooltip">
-                            The spell field starts with a 5m spherical radius and expands to 8m after 4 seconds of charging. Maximum charge duration is 5 seconds.
+                            <span>The spell field starts with a <span id="chargeTooltipInitialRadius"></span>m spherical radius and expands to <span id="chargeTooltipMaxRadius"></span>m after <span id="chargeTooltipGrowthDuration"></span> seconds of charging. Maximum charge duration is <span id="chargeTooltipMaxDuration"></span> seconds.</span>
                         </span>
                     </span>
                     <span class="orb-charge-label" id="chargeTimeLabel">Charge duration</span>
-                    <input class="control-value-input" type="range" id="chargeTime" min="0" max="5" step="0.1" value="0" tabindex="-1" aria-hidden="true">
-                    <div class="shape-slider circle-control" id="chargeControl" role="slider" tabindex="0" aria-labelledby="chargeTimeLabel" aria-describedby="sliderKeyboardHelp" aria-valuemin="0" aria-valuemax="5" aria-valuenow="0" aria-valuetext="0.0 seconds">
+                    <input class="control-value-input" type="range" id="chargeTime" step="0.1" value="0" tabindex="-1" aria-hidden="true">
+                    <div class="shape-slider circle-control" id="chargeControl" role="slider" tabindex="0" aria-labelledby="chargeTimeLabel" aria-describedby="sliderKeyboardHelp" aria-valuenow="0" aria-valuetext="0.0 seconds">
                         <svg viewBox="0 0 120 120" aria-hidden="true">
                             <circle class="charge-track" cx="60" cy="60" r="47"></circle>
                             <g transform="translate(120 0) scale(-1 1)">
@@ -132,14 +132,14 @@
                     <span class="tooltip-wrap">
                         <button class="tooltip-trigger info-trigger" type="button" aria-label="About Energy damage" aria-describedby="energyInfoTooltip">i</button>
                         <span class="tooltip-panel" id="energyInfoTooltip" role="tooltip">
-                            Each Energy point adds 3 damage to the spell field. At the center, base damage rises from 100 to 350 with a full 5-second charge. Absorbed projectile damage also increases power by 0.125 per point, up to 800 absorbed damage.
+                            <span>Each Energy point adds <span id="energyTooltipDamage"></span> damage to the spell field. At the center, base damage rises from <span id="energyTooltipInitialDamage"></span> to <span id="energyTooltipFullyChargedDamage"></span> with a full <span id="energyTooltipChargeDuration"></span>-second charge. Absorbed projectile damage also increases power by <span id="energyTooltipAbsorptionRate"></span> per point, up to <span id="energyTooltipMaxAbsorption"></span> absorbed damage.</span>
                         </span>
                     </span>
                 </div>
                 <div class="energy-adjust-row">
                     <div class="energy-visual">
-                    <input class="control-value-input" type="range" id="energy" min="0" max="100" step="1" value="0" tabindex="-1" aria-hidden="true">
-                    <div class="shape-slider energy-control" id="energyControl" role="slider" tabindex="0" aria-labelledby="energyLabel" aria-describedby="sliderKeyboardHelp" aria-valuemin="0" aria-valuemax="100" aria-valuenow="0" aria-valuetext="0 energy points">
+                    <input class="control-value-input" type="range" id="energy" step="1" value="0" tabindex="-1" aria-hidden="true">
+                    <div class="shape-slider energy-control" id="energyControl" role="slider" tabindex="0" aria-labelledby="energyLabel" aria-describedby="sliderKeyboardHelp" aria-valuenow="0" aria-valuetext="0 energy points">
                         <svg viewBox="0 0 200 105" aria-hidden="true">
                             <defs>
                                 <clipPath id="energyChevronClip">
@@ -181,7 +181,7 @@
                 <div class="step-controls energy-presets" role="group" aria-label="Set energy points">
                     <button class="preset-button" type="button" data-slider="energy" data-value="0">0</button>
                     <button class="preset-button" type="button" data-slider="energy" data-value="50">50</button>
-                    <button class="preset-button" type="button" data-slider="energy" data-value="99">99</button>
+                    <button class="preset-button" type="button" data-slider="energy" data-preset="safe-max"></button>
                 </div>
             </div>
 
@@ -191,19 +191,19 @@
                     <span class="tooltip-wrap">
                         <button class="tooltip-trigger info-trigger" type="button" aria-label="About distance and damage falloff" aria-describedby="distanceInfoTooltip">i</button>
                         <span class="tooltip-panel" id="distanceInfoTooltip" role="tooltip">
-                            Spell-field damage falls with distance and reaches 50% of center damage at 6m from the center. The field radius grows from 5m to a maximum of 8m after 4 seconds of charging.
+                            <span>Spell-field damage falls with distance and reaches <span id="distanceTooltipMinimumFalloff"></span>% of center damage at <span id="distanceTooltipFalloffDistance"></span>m from the center. The field radius grows from <span id="distanceTooltipInitialRadius"></span>m to a maximum of <span id="distanceTooltipMaxRadius"></span>m after <span id="distanceTooltipGrowthDuration"></span> seconds of charging.</span>
                         </span>
                     </span>
                 </div>
                 <div class="input-row">
                     <div class="distance-slider-wrap">
-                        <input type="range" id="distance" min="0" max="8" step="0.1" value="0" aria-describedby="radiusInfo distanceSliderHelp">
+                        <input type="range" id="distance" step="0.1" value="0" aria-describedby="radiusInfo distanceSliderHelp">
                         <span class="distance-radius-marker" id="distanceRadiusMarker" aria-hidden="true"></span>
                     </div>
                     <span class="value-display" id="distanceVal">0.0m</span>
                 </div>
                 <div class="distance-readout">
-                    <span id="radiusInfo">Current Spell Radius: 5.0m</span>
+                    <span id="radiusInfo">Current Spell Radius</span>
                 </div>
                 <span class="visually-hidden" id="distanceSliderHelp">The white tick marks the current spell radius.</span>
             </div>
@@ -235,10 +235,18 @@
     <footer class="site-disclaimer">
         <p><a href="https://github.com/buddyboom/marvel-rivals-magneto-ultimate/issues/new">Report a problem or inaccuracy</a></p>
         <p>This is an unofficial fan-made calculator and is not affiliated with, endorsed by, or sponsored by Marvel, NetEase, or any of their affiliates. Marvel, Marvel Rivals, and all related names, characters, and artwork belong to their respective rights holders. No ownership of those properties is claimed.</p>
+        <div class="site-footer-links">
+            <a class="github-link" href="https://github.com/buddyboom/marvel-rivals-magneto-ultimate" aria-label="View this project on GitHub">
+                <svg viewBox="0 0 16 16" aria-hidden="true" focusable="false">
+                    <path d="M6.766 11.328c-2.063-.25-3.516-1.734-3.516-3.656 0-.781.281-1.625.75-2.188-.203-.515-.172-1.609.063-2.062.625-.078 1.468.25 1.968.703.594-.187 1.219-.281 1.985-.281.765 0 1.39.094 1.953.265.484-.437 1.344-.765 1.969-.687.218.422.25 1.515.046 2.047.5.593.766 1.39.766 2.203 0 1.922-1.453 3.375-3.547 3.64.531.344.89 1.094.89 1.954v1.625c0 .468.391.734.86.547C13.781 14.359 16 11.53 16 8.03 16 3.61 12.406 0 7.984 0 3.563 0 0 3.61 0 8.031a7.88 7.88 0 0 0 5.172 7.422c.422.156.828-.125.828-.547v-1.25c-.219.094-.5.156-.75.156-1.031 0-1.64-.562-2.078-1.609-.172-.422-.36-.672-.719-.719-.187-.015-.25-.093-.25-.187 0-.188.313-.328.625-.328.453 0 .844.281 1.22.86.312.452.64.655 1.03.655s.641-.14 1-.5c.266-.265.47-.5.657-.656"></path>
+                </svg>
+            </a>
+        </div>
     </footer>
 </main>
 
 <script src="data/heroes.js" defer></script>
+<script src="data/ability.js" defer></script>
 <script src="js/calculator.js" defer></script>
 <script src="js/controls.js" defer></script>
 <script src="js/visualization.js" defer></script>

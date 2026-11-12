@@ -1,18 +1,30 @@
 (function (global) {
+    const ability = global.MagnetoAbility;
+
     function getSpellRadius(time) {
-        return time <= 4 ? 5 + (time / 4) * 3 : 8;
+        const { initial, max } = ability.radius;
+        const growthDuration = ability.charge.radiusGrowthDuration;
+        return time <= growthDuration
+            ? initial + (time / growthDuration) * (max - initial)
+            : max;
     }
 
     function getFalloffModifier(distance) {
-        return distance <= 6 ? 1 - (distance / 6) * 0.5 : 0.5;
+        const { falloffDistance, minimumFalloff } = ability.damage;
+        return distance <= falloffDistance
+            ? 1 - (distance / falloffDistance) * (1 - minimumFalloff)
+            : minimumFalloff;
     }
 
     function calculateDamage(time, energy, distance) {
         const radius = getSpellRadius(time);
-        const isSelfDestructed = energy >= 100;
+        const isSelfDestructed = energy >= ability.energy.overload;
+        const chargeProgress = time / ability.charge.max;
         const centerDamage = isSelfDestructed
             ? 0
-            : 100 + (time / 5) * 250 + energy * 3;
+            : ability.damage.initialCenter +
+                chargeProgress * (ability.damage.fullyChargedCenter - ability.damage.initialCenter) +
+                energy * ability.damage.energyPerPoint;
         const edgeDamage = centerDamage > 0
             ? Math.floor(centerDamage * getFalloffModifier(radius))
             : 0;
@@ -36,4 +48,8 @@
         getFalloffModifier,
         getSpellRadius
     };
-})(window);
+
+    if (typeof module !== 'undefined' && module.exports) {
+        module.exports = global.MagnetoCalculator;
+    }
+})(typeof window === 'undefined' ? globalThis : window);
