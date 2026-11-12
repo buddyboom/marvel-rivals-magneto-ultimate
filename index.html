@@ -9,24 +9,28 @@
 <body>
 
 <main class="container">
-    <h1>
-        <span class="tooltip-wrap title-tooltip">
-            <span class="tooltip-trigger title-tooltip-trigger" tabindex="0" aria-describedby="abilityInfoTooltip">Magneto Ultimate Damage Calculator</span>
-            <span class="tooltip-panel ability-info-tooltip" id="abilityInfoTooltip" role="tooltip">
-                <span class="tooltip-title">Magneto's Ultimate</span>
-                <span class="tooltip-description">Draw in surrounding materials to forge an iron meteor that deals massive damage on impact. Absorbing enemy projectiles can enhance its power, but overloading causes it to self-destruct.</span>
-                <span><strong>Key:</strong> Q</span>
-                <span><strong>Casting:</strong> Creates a persistent spell field, then launches a projectile when casting completes; the projectile creates another spell field on impact.</span>
-                <span><strong>Projectile absorption range:</strong> 15m spherical radius.</span>
-                <span><strong>Projectile speed:</strong> 45m/s.</span>
-                <span><strong>Explosion range:</strong> Spherical; grows from a 5m radius to 8m after 4 seconds of charging.</span>
-                <span><strong>Maximum duration:</strong> 5 seconds.</span>
-                <span><strong>Damage:</strong> The projectile deals no damage. Spell-field damage at the center increases from 100 to 350 when fully charged. Each Energy point adds 3 damage. Damage falls to 50% at 6m from the center.</span>
-                <span><strong>Energy cost:</strong> 3400.</span>
-                <span><strong>Special effect:</strong> Each point of projectile damage absorbed increases power by 0.125, up to 800 projectile damage absorbed.</span>
+    <header class="page-header">
+        <h1>
+            <span>Magneto Ultimate Damage Calculator</span>
+            <span class="tooltip-wrap title-tooltip">
+                <button class="tooltip-trigger info-trigger" type="button" aria-label="About Magneto's ultimate" aria-describedby="abilityInfoTooltip">i</button>
+                <span class="tooltip-panel ability-info-tooltip" id="abilityInfoTooltip" role="tooltip">
+                    <span class="tooltip-title">Magneto's Ultimate</span>
+                    <span class="tooltip-description">Draw in surrounding materials to forge an iron meteor that deals massive damage on impact. Absorbing enemy projectiles can enhance its power, but overloading causes it to self-destruct.</span>
+                    <span><strong>Key:</strong> Q</span>
+                    <span><strong>Casting:</strong> Creates a persistent spell field, then launches a projectile when casting completes; the projectile creates another spell field on impact.</span>
+                    <span><strong>Projectile absorption range:</strong> 15m spherical radius.</span>
+                    <span><strong>Projectile speed:</strong> 45m/s.</span>
+                    <span><strong>Explosion range:</strong> Spherical; grows from a 5m radius to 8m after 4 seconds of charging.</span>
+                    <span><strong>Maximum duration:</strong> 5 seconds.</span>
+                    <span><strong>Damage:</strong> The projectile deals no damage. Spell-field damage at the center increases from 100 to 350 when fully charged. Each Energy point adds 3 damage. Damage falls to 50% at 6m from the center.</span>
+                    <span><strong>Energy cost:</strong> 3400.</span>
+                    <span><strong>Special effect:</strong> Each point of projectile damage absorbed increases power by 0.125, up to 800 projectile damage absorbed.</span>
+                </span>
             </span>
-        </span>
-    </h1>
+        </h1>
+        <p class="build-version"><span>BUILD VERSION: 20261113</span></p>
+    </header>
     
     <div class="calculator-hud">
         <section class="hud-orb-column" aria-label="Damage summary and charge duration">
@@ -229,7 +233,7 @@
         <p class="roster-note">Not pictured: Bruce Banner (225 HP), Monster Hulk (1,400 HP), Kumiho (1,000 HP)</p>
     </section>
     <footer class="site-disclaimer">
-        <p><a href="mailto:buddyboom.co@gmail.com?subject=Magneto%20Calculator%20Correction&amp;body=Please%20describe%20the%20data%20that%20needs%20correction%20and%20include%20a%20source%20if%20available%3A%0A">Report a problem or inaccuracy</a></p>
+        <p><a href="https://github.com/buddyboom/marvel-rivals-magneto-ultimate/issues/new">Report a problem or inaccuracy</a></p>
         <p>This is an unofficial fan-made calculator and is not affiliated with, endorsed by, or sponsored by Marvel, NetEase, or any of their affiliates. Marvel, Marvel Rivals, and all related names, characters, and artwork belong to their respective rights holders. No ownership of those properties is claimed.</p>
     </footer>
 </main>

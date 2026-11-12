@@ -1,0 +1,28 @@
+name: Data correction
+description: Report incorrect calculator or hero data
+title: "Data correction: "
+labels:
+  - data correction
+body:
+  - type: textarea
+    id: incorrect-value
+    attributes:
+      label: What value appears to be incorrect?
+      description: Include the affected hero, control, or ability value.
+      placeholder: "For example: Magneto's spell radius at 4 seconds"
+    validations:
+      required: true
+  - type: textarea
+    id: correction
+    attributes:
+      label: What should the correct value be?
+    validations:
+      required: true
+  - type: input
+    id: source
+    attributes:
+      label: Source
+      description: Link to an official source, patch notes, or other evidence if available.
+      placeholder: https://
+    validations:
+      required: false
