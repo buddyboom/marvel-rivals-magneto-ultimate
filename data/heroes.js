@@ -38,6 +38,7 @@
         { id: 'mister-fantastic', name: 'Mister Fantastic', role: 'Duelist', hp: 375, icon: 'assets/heroes/mister-fantastic.png' },
         { id: 'moon-knight', name: 'Moon Knight', role: 'Duelist', hp: 275, icon: 'assets/heroes/moon-knight.png' },
         { id: 'namor', name: 'Namor', role: 'Duelist', hp: 275, icon: 'assets/heroes/namor.png' },
+        { id: 'nightcrawler', name: 'Nightcrawler', role: 'Strategist', hp: 275, icon: 'assets/heroes/nightcrawler.png' },
         { id: 'peni-parker', name: 'Peni Parker', role: 'Vanguard', hp: 650, icon: 'assets/heroes/peni-parker.png' },
         { id: 'phoenix', name: 'Phoenix', role: 'Duelist', hp: 250, icon: 'assets/heroes/phoenix.png' },
         { id: 'psylocke', name: 'Psylocke', role: 'Duelist', hp: 250, icon: 'assets/heroes/psylocke.png' },
