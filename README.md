@@ -1,3 +1,5 @@
+<img width="1668" height="973" alt="preview" src="https://github.com/user-attachments/assets/24dd822e-3f25-4f8d-b431-456aa3a31526" />
+
 # Magneto Ultimate Damage Calculator
 
 An unofficial, fan-made calculator for exploring Magneto's ultimate damage and its effect on the listed Marvel Rivals heroes.
