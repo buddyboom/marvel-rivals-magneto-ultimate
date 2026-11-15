@@ -1,4 +1,4 @@
-<img width="1668" height="973" alt="preview" src="https://github.com/user-attachments/assets/24dd822e-3f25-4f8d-b431-456aa3a31526" />
+<img width="1651" height="1117" alt="Screenshot of desktop website" src="https://github.com/user-attachments/assets/e81a66f9-98e5-4fc8-b70e-5d376e5722b2" />
 
 # Magneto Ultimate Damage Calculator
 
