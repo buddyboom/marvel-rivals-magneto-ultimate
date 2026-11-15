@@ -2,7 +2,7 @@
 
 # Magneto Ultimate Damage Calculator
 
-An unofficial, fan-made calculator for exploring Magneto's ultimate damage and its effect on the listed Marvel Rivals heroes.
+A fan-made calculator for exploring Magneto's ultimate damage and its effect on the listed Marvel Rivals heroes.
 
 **GitHub Pages URL:** https://buddyboom.github.io/marvel-rivals-magneto-ultimate/
 
