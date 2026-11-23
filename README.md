@@ -2,7 +2,7 @@
 
 # Magneto Ultimate Damage Calculator
 
-A fan-made calculator for exploring Magneto's ultimate damage and its effect on the listed Marvel Rivals heroes.
+A fan-made calculator for calculating Magneto's ultimate damage and its effect on the listed Marvel Rivals heroes.
 
 **GitHub Pages URL:** https://buddyboom.github.io/marvel-rivals-magneto-ultimate/
 
@@ -23,7 +23,7 @@ The calculator follows the ability description used for this project and is an e
 
 ## Run locally
 
-This is a static site and has no package installation or build step. From the project root, run a local web server, for example:
+This is a static site and has no package installation or build step. From the project root, run a local web server. For example:
 
 ```sh
 python -m http.server 8000
@@ -55,11 +55,9 @@ If you spot inaccurate data or have a suggested correction, use the link at the 
 
 ## Ownership and third-party assets
 
-This is an unofficial fan project. It is not affiliated with, endorsed by, or sponsored by Marvel, NetEase, or their affiliates.
+This is a fan project. It is not affiliated with, endorsed by, or sponsored by Marvel, NetEase, or their affiliates.
 
 The hero portrait images in `assets/heroes/` were sourced from [tiermaker.com](https://tiermaker.com/create/marvel-rivals-characters-17333617) and depict Marvel Rivals characters. I do not own or claim ownership of those images, the underlying artwork, character names, game content, or any other third-party art or intellectual property used here. All such rights belong to their respective owners. tiermaker.com is identified as the source of the portrait files, not as the owner of the underlying Marvel Rivals artwork.
-
-The GitHub mark in the page footer uses the `mark-github` icon from [GitHub Primer Octicons](https://github.com/primer/octicons), which is licensed under the [MIT License](https://github.com/primer/octicons/blob/main/LICENSE).
 
 Mentioning a source or disclaiming ownership does not grant permission to use or redistribute third-party material. No rights to third-party assets are granted by this project. Check the applicable rights-holder and platform policies before publishing or reusing the images, especially for commercial purposes.
 
